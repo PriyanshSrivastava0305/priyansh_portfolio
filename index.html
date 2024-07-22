@@ -22,7 +22,8 @@
             }
         }
         .spin {
-            animation: spin 2s linear infinite;
+            /* animation: spin 2s linear infinite; */
+            animation: spin 4s linear infinite;
         }
 
         @keyframes move-and-shrink {
@@ -32,8 +33,8 @@
                 transform: translate(-50%, -50%) scale(1);
             }
             100% {
-                top: 8px;
-                left: 10px;
+                top: 10px;
+                left: 5px;
                 transform: translate(0, 0) scale(0.5);
             }
         }
@@ -49,7 +50,7 @@
         <img src="assets/loader.svg" alt="Loading..." class="w-full h-full spin">
     </div>
 
-
+    
 
     <script>
            window.addEventListener('load', () => {
