@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<style>
+     .bg {
+            background-color: rgba(236, 234, 222, 1);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .spin {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes move-and-shrink {
+            0% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                top: 8px;
+                left: 10px;
+                transform: translate(0, 0) scale(0.5);
+            }
+        }
+
+        .animate-move-and-shrink {
+            animation: move-and-shrink 2s forwards;
+        }
+</style>
+<body class="bg flex items-center justify-center h-screen">
+
+
+    <div id="logo" class="flex items-center justify-center fixed w-40 h-40">
+        <img src="assets/loader.svg" alt="Loading..." class="w-full h-full spin">
+    </div>
+
+
+
+    <script>
+           window.addEventListener('load', () => {
+            const MIN_DISPLAY_TIME = 2000; // Minimum display time in milliseconds (e.g., 2000ms = 2 seconds)
+            const logo = document.getElementById('logo');
+            const content = document.getElementById('content');
+            const startTime = new Date().getTime();
+
+            const showContent = () => {
+                const elapsedTime = new Date().getTime() - startTime;
+                const remainingTime = MIN_DISPLAY_TIME - elapsedTime;
+
+                if (remainingTime > 0) {
+                    setTimeout(() => {
+                        logo.classList.add('animate-move-and-shrink');
+                        content.classList.remove('hidden');
+                    }, remainingTime);
+                } else {
+                    logo.classList.add('animate-move-and-shrink');
+                    content.classList.remove('hidden');
+                }
+            };
+
+            showContent();
+        });
+    </script>
+</body>
+
+</html>
