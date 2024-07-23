@@ -68,9 +68,21 @@
 
     <script>
            window.addEventListener('load', () => {
+            console.log('Page fully loaded');
             const MIN_DISPLAY_TIME = 2000; // Minimum display time in milliseconds (e.g., 2000ms = 2 seconds)
             const logo = document.getElementById('logo');
             const content = document.getElementById('content');
+            
+            // Check if elements are found
+            if (!logo) {
+                console.error('Logo element not found');
+                return;
+            }
+            if (!content) {
+                console.error('Content element not found');
+                return;
+            }
+
             const startTime = new Date().getTime();
 
             const showContent = () => {
@@ -80,11 +92,17 @@
                 if (remainingTime > 0) {
                     setTimeout(() => {
                         logo.classList.add('animate-move-and-shrink');
-                        content.classList.remove('hidden');
+                        logo.addEventListener('animationend', () => {
+                            content.classList.remove('hidden');
+                            content.classList.add('animate-slide-in');
+                        });
                     }, remainingTime);
                 } else {
                     logo.classList.add('animate-move-and-shrink');
-                    content.classList.remove('hidden');
+                    logo.addEventListener('animationend', () => {
+                        content.classList.remove('hidden');
+                        content.classList.add('animate-slide-in');
+                    });
                 }
             };
 
