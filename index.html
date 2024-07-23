@@ -21,9 +21,9 @@
                 transform: rotate(360deg);
             }
         }
+
         .spin {
-            /* animation: spin 2s linear infinite; */
-            animation: spin 4s linear infinite;
+            animation: spin 2s linear infinite;
         }
 
         @keyframes move-and-shrink {
@@ -34,13 +34,64 @@
             }
             100% {
                 top: 10px;
-                left: 5px;
-                transform: translate(0, 0) scale(0.5);
+                left: 10px;
+                transform: translate(0, 0) scale(0.2);
             }
         }
 
         .animate-move-and-shrink {
             animation: move-and-shrink 2s forwards;
+        }
+
+        @keyframes slide-in {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-in {
+            animation: slide-in 1s ease-out forwards;
+        }
+
+        /* Ensure content is hidden initially */
+        #content {
+            opacity: 0;
+        }
+
+        /* Make sure the navbar is above other content */
+        nav {
+            z-index: 10;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hero img {
+            width: 50%;
+            height: auto;
+        }
+
+        .hero-text {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #000;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-text span {
+            color: red;
         }
 </style>
 <body class="bg flex items-center justify-center h-screen">
