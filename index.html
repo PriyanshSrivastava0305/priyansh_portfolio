@@ -118,7 +118,7 @@
     </div>
 
     <script>
-           window.addEventListener('load', () => {
+            window.addEventListener('load', () => {
             console.log('Page fully loaded');
             const MIN_DISPLAY_TIME = 2000; // Minimum display time in milliseconds (e.g., 2000ms = 2 seconds)
             const logo = document.getElementById('logo');
@@ -145,14 +145,12 @@
                         logo.classList.add('animate-move-and-shrink');
                         logo.addEventListener('animationend', () => {
                             content.classList.remove('hidden');
-                            content.classList.add('animate-slide-in');
                         });
                     }, remainingTime);
                 } else {
                     logo.classList.add('animate-move-and-shrink');
                     logo.addEventListener('animationend', () => {
                         content.classList.remove('hidden');
-                        content.classList.add('animate-slide-in');
                     });
                 }
             };
