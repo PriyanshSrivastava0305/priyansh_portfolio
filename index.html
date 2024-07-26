@@ -13,32 +13,6 @@
         background-color: rgba(236, 234, 222, 1);
     }
 
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    .spin {
-        animation: spin 2s linear infinite;
-    }
-
-    @keyframes move-and-shrink {
-        0% {
-            transform: translateY(0) scale(1);
-        }
-        100% {
-            transform: translateY(0) scale(0.2);
-        }
-    }
-
-    .animate-move-and-shrink {
-        animation: move-and-shrink 2s forwards;
-    }
-
     @keyframes slide-in {
         0% {
             transform: translateY(100%);
@@ -54,42 +28,41 @@
         animation: slide-in 1s ease-out forwards;
     }
 
-    /* Ensure content is hidden initially */
-    #content,
-    #navbar {
-        opacity: 0;
-    }
-
-    /* Make sure the navbar is above other content */
-    nav {
-        z-index: 10;
-    }
-
     .hero {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: calc(100vh - 64px); /* Adjust for navbar height */
         padding: 20px;
     }
 
     .hero img {
-        width: 50%;
-        height: auto;
-        margin-top: 20px; /* Added to move the image down */
-    }
+    width: 50%;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
     .hero-text {
-        font-size: 3rem;
-        line-height: 1.2;
+        font-size: 7rem;
+        line-height: 1;
         color: #000;
         font-weight: bold;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        position: absolute;
+        left: 20px; /* Align to the extreme left */
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%);
     }
 
     .hero-text span {
-        color: red;
+        color: #302F2D;
+        display: block; /* Ensure each character is on a new line */
+        line-height: 1; /* Ensure tight vertical spacing */
     }
 
     .navbar {
@@ -98,7 +71,7 @@
         align-items: center;
         width: 100%;
         padding: 10px 20px;
-        background-color: #1f2937; /* bg-gray-800 */
+        background-color: #1f293700; /* bg-gray-800 */
     }
 
     .navbar-logo {
@@ -126,80 +99,41 @@
 <body class="bg flex items-center justify-center h-screen">
 
 <!-- Navbar -->
-<div id="navbar" class="navbar fixed top-0 left-0 w-full flex items-center hidden">
-    <div class="logo-container">
-        <img src="assets/loader.svg" alt="Logo" class="w-12 h-12 animate-move-and-shrink" id="logo">
-    </div>
-    <ul class="navbar-menu flex space-x-4">
-        <li><a href="#home" class="hover:underline text-white">Home</a></li>
-        <li><a href="#about" class="hover:underline text-white">About</a></li>
-        <li><a href="#projects" class="hover:underline text-white">Projects</a></li>
-        <li><a href="#contact" class="hover:underline text-white">Contact</a></li>
-    </ul>
+<div id="navbar" class="navbar fixed top-0 left-0 w-full animate-slide-in">
+<div class="logo-container">
+    <img src="assets/loader.svg" alt="Logo" class="w-12 h-12">
+</div>
+<ul class="navbar-menu flex space-x-4">
+    <li><a href="#home" class="hover:underline text-[#302F2D]">Home</a></li>
+    <li><a href="#about" class="hover:underline text-[#302F2D]">About</a></li>
+    <li><a href="#projects" class="hover:underline text-[#302F2D]">Projects</a></li>
+    <li><a href="#contact" class="hover:underline text-[#302F2D]">Contact</a></li>
+</ul>
 </div>
 
 <!-- Main Content -->
-<div id="content" class="hidden animate-slide-in">
-    <header class="hero mt-20">
-        <div class="hero-text">
-            <span>Hello</span>
-            <span>HADES</span>
-        </div>
-        <img src="assets\hades.svg" alt="HADES Image">
-    </header>
+<div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full h-full">
+<header class="hero w-full h-full">
+    <div class="hero-text">
+        <span>H</span>
+        <span>A</span>
+        <span>D</span>
+        <span>E</span>
+        <span>S</span>
+    </div>
+    <img src="assets/hades.svg" alt="HADES Image" class="self-center">
+</header>
 </div>
 
 <script>
-    window.addEventListener('load', () => {
-        console.log('Page fully loaded');
-        const MIN_DISPLAY_TIME = 2000; // Minimum display time in milliseconds (e.g., 2000ms = 2 seconds)
-        const logo = document.getElementById('logo');
-        const content = document.getElementById('content');
-        const navbar = document.getElementById('navbar');
-        
-        // Check if elements are found
-        if (!logo) {
-            console.error('Logo element not found');
-            return;
-        }
-        if (!content) {
-            console.error('Content element not found');
-            return;
-        }
-        if (!navbar) {
-            console.error('Navbar element not found');
-            return;
-        }
-
-        const startTime = new Date().getTime();
-
-        const showContent = () => {
-            const elapsedTime = new Date().getTime() - startTime;
-            const remainingTime = MIN_DISPLAY_TIME - elapsedTime;
-
-            if (remainingTime > 0) {
-                setTimeout(() => {
-                    logo.classList.add('animate-move-and-shrink');
-                    logo.addEventListener('animationend', () => {
-                        navbar.classList.remove('hidden');
-                        navbar.classList.add('animate-slide-in');
-                        content.classList.remove('hidden');
-                        content.classList.add('animate-slide-in');
-                    });
-                }, remainingTime);
-            } else {
-                logo.classList.add('animate-move-and-shrink');
-                logo.addEventListener('animationend', () => {
-                    navbar.classList.remove('hidden');
-                    navbar.classList.add('animate-slide-in');
-                    content.classList.remove('hidden');
-                    content.classList.add('animate-slide-in');
-                });
-            }
-        };
-
-        showContent();
-    });
+window.addEventListener('load', () => {
+    console.log('Page fully loaded');
+    const content = document.getElementById('content');
+    const navbar = document.getElementById('navbar');
+    
+    navbar.classList.add('animate-slide-in');
+    content.classList.add('animate-slide-in');
+});
 </script>
 </body>
 </html>
