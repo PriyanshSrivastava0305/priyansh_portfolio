@@ -61,33 +61,49 @@
 
     .hero-text span {
         color: #302F2D;
-        display: block; /* Ensure each character is on a new line */
-        line-height: 1; /* Ensure tight vertical spacing */
+        display: block;
+        line-height: 1;
     }
+
+    .hero-text span:first-child {
+        color: transparent;
+        -webkit-text-stroke: 2px red; 
+    }
+
+    .hero-text span:first-child::first-letter {
+        color: #302F2D; 
+        -webkit-text-stroke: 2px red; 
+    }
+
 
     .navbar {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-between; /* Distributes space between logo and menu */
         align-items: center;
-        width: 100%;
-        padding: 10px 20px;
-        background-color: #1f293700; /* bg-gray-800 */
+        width: calc(100% - 20px); /* Reduce width to create space on the right */
+        padding: 10px 20px; /* Adjust padding as needed */
+        margin-right: 10px; /* Add space on the right side */
+        background-color: #1f293700;
     }
-
     .navbar-logo {
         display: flex;
         align-items: center;
+        margin-right: 20px; /* Adds space between the logo and the menu */
     }
 
     .navbar-menu {
         display: flex;
-        justify-content: flex-end;
         align-items: center;
-        flex-grow: 1;
+        gap: 20px; /* Consistent spacing between items */
     }
 
     .navbar-menu li {
-        margin-left: 20px;
+        list-style: none; /* Remove default list styling */
+    }
+
+
+    .navbar-menu li a:hover {
+        text-decoration: underline; 
     }
 
     .logo-container {
@@ -104,10 +120,10 @@
     <img src="assets/loader.svg" alt="Logo" class="w-12 h-12">
 </div>
 <ul class="navbar-menu flex space-x-4">
-    <li><a href="#home" class="hover:underline text-[#302F2D]">Home</a></li>
-    <li><a href="#about" class="hover:underline text-[#302F2D]">About</a></li>
-    <li><a href="#projects" class="hover:underline text-[#302F2D]">Projects</a></li>
-    <li><a href="#contact" class="hover:underline text-[#302F2D]">Contact</a></li>
+    <li><a href="#home" class="hover:underline text-[#302F2D] text-xl">Home</a></li>
+    <li><a href="#about" class="hover:underline text-[#302F2D] text-xl">About</a></li>
+    <li><a href="#projects" class="hover:underline text-[#302F2D] text-xl">Projects</a></li>
+    <li><a href="#contact" class="hover:underline text-[#302F2D] text-xl">Contact</a></li>
 </ul>
 </div>
 
@@ -115,7 +131,7 @@
 <div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full h-full">
 <header class="hero w-full h-full">
     <div class="hero-text">
-        <span>H</span>
+        <span>HELLO</span>
         <span>A</span>
         <span>D</span>
         <span>E</span>
