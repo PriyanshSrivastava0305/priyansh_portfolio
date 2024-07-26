@@ -8,6 +8,7 @@
 
     <title>Document</title>
 </head>
+
 <style>
     .bg {
         background-color: rgba(236, 234, 222, 1);
@@ -15,7 +16,7 @@
 
     @keyframes slide-in {
         0% {
-            transform: translateY(100%);
+            transform: translateY(-100%);
             opacity: 0;
         }
         100% {
@@ -29,33 +30,30 @@
     }
 
     .hero {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: calc(100vh - 64px); /* Adjust for navbar height */
-        padding: 20px;
-    }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: calc(100vh - 64px); /* Adjust for navbar height */
+            padding: 20px;
+        }
 
-    .hero img {
-    width: 50%;
-    height: 90%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
+        .hero img {
+        width: 50%;
+        height: 90%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
     .hero-text {
         font-size: 7rem;
         line-height: 1;
         color: #000;
         font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
         position: absolute;
-        left: 20px; /* Align to the extreme left */
-        top: 50%; /* Center vertically */
+        left: 20px;
+        top: 50%;
         transform: translateY(-50%);
     }
 
@@ -67,89 +65,105 @@
 
     .hero-text span:first-child {
         color: transparent;
-        -webkit-text-stroke: 2px red; 
+        -webkit-text-stroke: 2px red;
     }
 
     .hero-text span:first-child::first-letter {
-        color: #302F2D; 
-        -webkit-text-stroke: 2px red; 
+        color: #302F2D;
+        -webkit-text-stroke: 2px red;
     }
 
-
-    .navbar {
-        display: flex;
-        justify-content: space-between; /* Distributes space between logo and menu */
-        align-items: center;
-        width: calc(100% - 20px); /* Reduce width to create space on the right */
-        padding: 10px 20px; /* Adjust padding as needed */
-        margin-right: 10px; /* Add space on the right side */
-        background-color: #1f293700;
-    }
     .navbar-logo {
         display: flex;
         align-items: center;
-        margin-right: 20px; /* Adds space between the logo and the menu */
+        margin-right: 20px;
     }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px 20px;
+        background-color: #1f293700;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10; /* Ensure navbar is above other content */
+    }
+
+
 
     .navbar-menu {
         display: flex;
         align-items: center;
-        gap: 20px; /* Consistent spacing between items */
+        gap: 20px;
     }
 
     .navbar-menu li {
-        list-style: none; /* Remove default list styling */
+        list-style: none;
     }
 
+    .navbar-menu li a {
+        display: block;
+        color: rgb(75, 68, 68);
+        padding: 10px 15px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+    }
 
     .navbar-menu li a:hover {
-        text-decoration: underline; 
+        color: rgb(75, 68, 68);
+        transform: translateY(-3px);
     }
-
+    
     .logo-container {
         display: flex;
         align-items: center;
     }
 </style>
-</head>
+
+
 <body class="bg flex items-center justify-center h-screen">
 
-<!-- Navbar -->
-<div id="navbar" class="navbar fixed top-0 left-0 w-full animate-slide-in">
-<div class="logo-container">
-    <img src="assets/loader.svg" alt="Logo" class="w-12 h-12">
-</div>
-<ul class="navbar-menu flex space-x-4">
-    <li><a href="#home" class="hover:underline text-[#302F2D] text-xl">Home</a></li>
-    <li><a href="#about" class="hover:underline text-[#302F2D] text-xl">About</a></li>
-    <li><a href="#projects" class="hover:underline text-[#302F2D] text-xl">Projects</a></li>
-    <li><a href="#contact" class="hover:underline text-[#302F2D] text-xl">Contact</a></li>
-</ul>
-</div>
+    <!-- Navbar -->
+    <div id="navbar" class="navbar fixed top-0 left-0 w-full">
+        <div class="navbar-logo">
+            <img src="assets/loader.svg" alt="Logo" class="w-12 h-12">
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="#home" class="text-xl font-semibold">Home</a></li>
+            <li><a href="#about" class="text-xl font-semibold">About</a></li>
+            <li><a href="#projects" class="text-xl font-semibold">Projects</a></li>
+            <li><a href="#contact" class="text-xl font-semibold">Contact</a></li>
+        </ul>
+    </div>  
 
-<!-- Main Content -->
-<div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full h-full">
-<header class="hero w-full h-full">
-    <div class="hero-text">
-        <span>HELLO</span>
-        <span>A</span>
-        <span>D</span>
-        <span>E</span>
-        <span>S</span>
+    <!-- Main Content -->
+    <div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full h-full">
+        <header class="hero w-full h-full">
+            <div class="hero-text">
+                <span>HELLO</span>
+                <span>A</span>
+                <span>D</span>
+                <span>E</span>
+                <span>S</span>
+            </div>
+            <img src="assets/hades.svg" alt="HADES Image" class="self-center">
+        </header>
     </div>
-    <img src="assets/hades.svg" alt="HADES Image" class="self-center">
-</header>
-</div>
 
-<script>
-window.addEventListener('load', () => {
-    console.log('Page fully loaded');
-    const content = document.getElementById('content');
-    const navbar = document.getElementById('navbar');
-    
-    navbar.classList.add('animate-slide-in');
-    content.classList.add('animate-slide-in');
-});
-</script>
+    <script>
+        window.addEventListener('load', () => {
+            console.log('Page fully loaded');
+            const content = document.getElementById('content');
+            const navbar = document.getElementById('navbar');
+            
+            // Add animation class to both navbar and content
+            navbar.classList.add('animate-slide-in');
+            content.classList.add('animate-slide-in');
+        });
+    </script>
 </body>
 </html>
