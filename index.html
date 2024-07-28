@@ -5,128 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-
     <title>Document</title>
-</head>
-
-<style>
-    .bg {
-        background-color: rgba(236, 234, 222, 1);
-    }
-
-    @keyframes slide-in {
-        0% {
-            transform: translateY(-100%);
-            opacity: 0;
+    <style>
+        .bg {
+            background-color: rgba(236, 234, 222, 1);
         }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
+
+        @keyframes slide-in {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
-    }
 
-    .animate-slide-in {
-        animation: slide-in 1s ease-out forwards;
-    }
+        .animate-slide-in {
+            animation: slide-in 1s ease-out forwards;
+        }
 
-    .hero {
+        .hero {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: calc(100vh - 64px); /* Adjust for navbar height */
             padding: 20px;
+            position: relative;
         }
 
         .hero img {
-        width: 50%;
-        height: 90%;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+            width: 50%;
+            height: 90%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    .hero-text {
-        font-size: 7rem;
-        line-height: 1;
-        color: #000;
-        font-weight: bold;
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+        .hero-text {
+            font-size: 7rem;
+            line-height: 1;
+            color: #000;
+            font-weight: bold;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
 
-    .hero-text span {
-        color: #302F2D;
-        display: block;
-        line-height: 1;
-    }
+        .hero-text span {
+            color: #302F2D;
+            display: block;
+            line-height: 1;
+        }
 
-    .hero-text span:first-child {
-        color: transparent;
-        -webkit-text-stroke: 2px red;
-    }
+        .hero-text span:first-child {
+            color: transparent;
+            -webkit-text-stroke: 2px red;
+        }
 
-    .hero-text span:first-child::first-letter {
-        color: #302F2D;
-        -webkit-text-stroke: 2px red;
-    }
+        .hero-text span:first-child::first-letter {
+            color: #302F2D;
+            -webkit-text-stroke: 2px red;
+        }
 
-    .navbar-logo {
-        display: flex;
-        align-items: center;
-        margin-right: 20px;
-    }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
 
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 10px 20px;
-        background-color: #1f293700;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10; /* Ensure navbar is above other content */
-    }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #1f293700;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10; /* Ensure navbar is above other content */
+        }
 
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
+        .navbar-menu li {
+            list-style: none;
+        }
 
-    .navbar-menu {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
+        .navbar-menu li a {
+            display: block;
+            color: rgb(75, 68, 68);
+            padding: 10px 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-    .navbar-menu li {
-        list-style: none;
-    }
+        .navbar-menu li a:hover {
+            color: rgb(75, 68, 68);
+            transform: translateY(-3px);
+        }
 
-    .navbar-menu li a {
-        display: block;
-        color: rgb(75, 68, 68);
-        padding: 10px 15px;
-        text-decoration: none;
-        transition: all 0.3s ease;
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
 
-    }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+            }
 
-    .navbar-menu li a:hover {
-        color: rgb(75, 68, 68);
-        transform: translateY(-3px);
-    }
-    
-    .logo-container {
-        display: flex;
-        align-items: center;
-    }
-</style>
+            .hero img {
+                width: 70%;
+                height: auto;
+                position: static;
+                transform: none;
+                margin-top: 20px;
+            }
 
+            .hero-text {
+                font-size: 4rem;
+                position: static;
+                transform: none;
+                text-align: center;
+            }
 
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .navbar-menu {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .navbar-menu li {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
 <body class="bg flex items-center justify-center h-screen">
-
     <!-- Navbar -->
     <div id="navbar" class="navbar fixed top-0 left-0 w-full">
         <div class="navbar-logo">
@@ -138,7 +174,7 @@
             <li><a href="#projects" class="text-xl font-semibold">Projects</a></li>
             <li><a href="#contact" class="text-xl font-semibold">Contact</a></li>
         </ul>
-    </div>  
+    </div>
 
     <!-- Main Content -->
     <div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full h-full">
@@ -159,7 +195,7 @@
             console.log('Page fully loaded');
             const content = document.getElementById('content');
             const navbar = document.getElementById('navbar');
-            
+
             // Add animation class to both navbar and content
             navbar.classList.add('animate-slide-in');
             content.classList.add('animate-slide-in');
