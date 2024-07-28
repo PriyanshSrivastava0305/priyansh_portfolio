@@ -118,8 +118,50 @@
             align-items: center;
         }
 
-        /* Responsive Styles */
+        /* Dropdown menu for mobile */
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .navbar-toggle span {
+            background: #302F2D;
+            display: block;
+            height: 2px;
+            margin: 4px 0;
+            width: 25px;
+        }
+
+        .navbar-menu {
+            display: flex;
+        }
+
+        .navbar-menu.mobile {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .navbar-menu.mobile.show {
+            display: flex;
+        }
+
         @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+            }
+
+            .navbar-toggle {
+                display: flex;
+            }
+
+            .navbar-menu.mobile {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
             .hero {
                 flex-direction: column;
                 justify-content: center;
@@ -141,24 +183,6 @@
                 transform: none;
                 text-align: center;
             }
-
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 10px;
-            }
-
-            .navbar-menu {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-                width: 100%;
-            }
-
-            .navbar-menu li {
-                width: 100%;
-                text-align: left;
-            }
         }
     </style>
 </head>
@@ -168,13 +192,24 @@
         <div class="navbar-logo">
             <img src="assets/loader.svg" alt="Logo" class="w-12 h-12">
         </div>
+        <div class="navbar-toggle" id="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="navbar-menu">
             <li><a href="#home" class="text-xl font-semibold">Home</a></li>
             <li><a href="#about" class="text-xl font-semibold">About</a></li>
             <li><a href="#projects" class="text-xl font-semibold">Projects</a></li>
             <li><a href="#contact" class="text-xl font-semibold">Contact</a></li>
         </ul>
-    </div>
+        <ul class="navbar-menu mobile" id="navbar-mobile">
+            <li><a href="#home" class="text-xl font-semibold">Home</a></li>
+            <li><a href="#about" class="text-xl font-semibold">About</a></li>
+            <li><a href="#projects" class="text-xl font-semibold">Projects</a></li>
+            <li><a href="#contact" class="text-xl font-semibold">Contact</a></li>
+        </ul>
+    </div>  
 
     <!-- Main Content -->
     <div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full h-full">
@@ -195,10 +230,16 @@
             console.log('Page fully loaded');
             const content = document.getElementById('content');
             const navbar = document.getElementById('navbar');
-
+            const navbarToggle = document.getElementById('navbar-toggle');
+            const navbarMobile = document.getElementById('navbar-mobile');
+            
             // Add animation class to both navbar and content
             navbar.classList.add('animate-slide-in');
             content.classList.add('animate-slide-in');
+
+            navbarToggle.addEventListener('click', () => {
+                navbarMobile.classList.toggle('show');
+            });
         });
     </script>
 </body>
