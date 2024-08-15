@@ -36,6 +36,8 @@
             height: calc(100vh - 64px); /* Adjust for navbar height */
             padding: 20px;
             position: relative;
+            margin-top: 15rem;
+            /* margin-bottom: 10rem; */
         }
 
         .hero img {
@@ -83,10 +85,10 @@
         .navbar {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items:center;
             width: 100%;
             background-color: #1f293700;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             z-index: 10; /* Ensure navbar is above other content */
@@ -122,23 +124,16 @@
             align-items: center;
         }
 
+        .about-head{
+            text-align: center;
+            margin-top: 10rem;            
+        }
+
+        
         
         
         @media (max-width: 768px) {
-            /* .navbar-menu {
-                display: none;
-            }
-
-            .navbar-toggle {
-                display: flex;
-            }
-
-            .navbar-menu.mobile {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            } */
-
+            
             .hero {
                 flex-direction: column;
                 justify-content: center;
@@ -164,30 +159,6 @@
     </style>
 </head>
 <body class="bg flex items-center justify-center h-screen">
-    <!-- Navbar -->
-    <!-- <div id="navbar" class="navbar fixed top-0 left-0 w-full">
-        <div class="navbar-logo">
-            <img src="assets/loader.svg" alt="Logo" class="w-12 h-12">
-        </div>
-        <div class="navbar-toggle" id="navbar-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul class="navbar-menu">
-            <li><a href="#home" class="text-xl font-semibold">Home</a></li>
-            <li><a href="#about" class="text-xl font-semibold">About</a></li>
-            <li><a href="#projects" class="text-xl font-semibold">Projects</a></li>
-            <li><a href="#contact" class="text-xl font-semibold">Contact</a></li>
-        </ul>
-        <ul class="navbar-menu mobile" id="navbar-mobile">
-            <li><a href="#home" class="text-xl font-semibold">Home</a></li>
-            <li><a href="#about" class="text-xl font-semibold">About</a></li>
-            <li><a href="#projects" class="text-xl font-semibold">Projects</a></li>
-            <li><a href="#contact" class="text-xl font-semibold">Contact</a></li>
-        </ul>
-    </div>   -->
-
     
     <div id="navbar" class="navbar fixed top-0 left-0 w-full">     
         <nav class="bg-transparent w-full">
@@ -222,7 +193,7 @@
     </div>
 
     <!-- Main Content -->
-    <div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full h-full">
+    <div id="content" class="animate-slide-in flex flex-col justify-center items-center w-full">
         <header class="hero w-full h-full">
             <div class="hero-text">
                 <span>HELLO</span>
@@ -233,12 +204,17 @@
             </div>
             <img src="assets/hades.svg" alt="HADES Image" class="self-center">
         </header>
+        <div class="about-head">
+            <span>about</span>
+            <p>
+                This is some information about me and my works nothing much to tell <br>
+                lets see what else i can add here <br>
+                blahh blahh blahh blahh blahh blahh blahh blahh blahh <br>
+            </p>
+        </div>
     </div>
 
-    <!-- about section -->
-    <div id="about" class="about">
-        <span>About</span>
-    </div>
+    
     <script>
        window.addEventListener('load', () => {
             console.log('Page fully loaded');
